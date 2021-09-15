@@ -1,17 +1,14 @@
-/* SimpleApp.scala */
+/* GCS-BQ-connector-demo.scala */
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.{SQLContext, SparkSession}
 
-
-
 object GCS-BQ-connector-demo {
   def main(args: Array[String]) {
 
-
-  	println("\n\n In main ")
+    println("\n\n In main ")
     val inputPath = "<replace with gsc path to test file>"
     val outputPath = "<replace with gsc path to output directory>/"
     
@@ -38,7 +35,8 @@ object GCS-BQ-connector-demo {
     println("\n\n Saving file  to GCS")
     wordCounts.saveAsTextFile(outputPath)
     println("\n\n Done ")
-	  println("\n\n Creating Dataframe ")
+    
+    println("\n\n Creating Dataframe ")
     wordCounts.cache()
     val dfWithSchema = spark.createDataFrame(wordCounts).toDF("word", "count")
     println("\n\n Printing Dataframe ")
